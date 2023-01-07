@@ -40,8 +40,8 @@ public class ScheduleDetailsActivity extends AppCompatActivity {
     private TextView mStartDateView;    // 日程开始日期
     private TextView mEndTimeView;  // 日程结束时间
     private TextView mEndDateView;  // 日程结束日期
-    private TextView mWeather;  // 日程天气
-    private TextView mWeatherHint;  // 日程天气提示
+//    private TextView mWeather;  // 日程天气
+//    private TextView mWeatherHint;  // 日程天气提示
     private TextView mScheduleType; // 日程类别
     private BottomNavigationView bottomNavigationMenu;  // 菜单
     private Uri mCurrentScheduleUri;    // 当前日程的Uri
@@ -65,8 +65,8 @@ public class ScheduleDetailsActivity extends AppCompatActivity {
         mStartDateView = findViewById(R.id.single_schedule_start_date);
         mEndTimeView = findViewById(R.id.single_schedule_end_time);
         mEndDateView = findViewById(R.id.single_schedule_end_date);
-        mWeather = findViewById(R.id.single_schedule_day_weather);
-        mWeatherHint = findViewById(R.id.single_schedule_day_weather_description);
+//        mWeather = findViewById(R.id.single_schedule_day_weather);
+//        mWeatherHint = findViewById(R.id.single_schedule_day_weather_description);
         mScheduleType = findViewById(R.id.single_schedule_type);
         bottomNavigationMenu = findViewById(R.id.single_schedule_bottom_navigation);
 
@@ -81,8 +81,8 @@ public class ScheduleDetailsActivity extends AppCompatActivity {
         mStartTimeView.setText(intent.getStringExtra("Time"));
         mEndDateView.setText(intent.getStringExtra("EndDate"));
         mEndTimeView.setText(intent.getStringExtra("EndTime"));
-        mWeather.setText(intent.getStringExtra("Weather"));
-        mWeatherHint.setText(intent.getStringExtra("WeatherDetails"));
+//        mWeather.setText(intent.getStringExtra("Weather"));
+//        mWeatherHint.setText(intent.getStringExtra("WeatherDetails"));
         mScheduleType.setText(intent.getStringExtra("Type"));
         scheduleTextForShare = "日程\"" + intent.getStringExtra("Name") + "\"： "
                 + intent.getStringExtra("StartDescription") + "， "
@@ -105,9 +105,9 @@ public class ScheduleDetailsActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.single_event_share:
-                        shareSchedule();
-                        return true;
+//                    case R.id.single_event_share:
+//                        shareSchedule();
+//                        return true;
                     case R.id.single_event_modify:
                         // 进入编辑页面
                         Intent intent = new Intent(ScheduleDetailsActivity.this, AddScheduleActivity.class);

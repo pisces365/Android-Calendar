@@ -696,9 +696,9 @@ public class CalendarLayout extends LinearLayout {
                     requestLayout();
                 }
                 hideWeek(true);
-                if (mDelegate.mViewChangeListener != null && isWeekView) {
-                    mDelegate.mViewChangeListener.onViewChange(true);
-                }
+//                if (mDelegate.mViewChangeListener != null && isWeekView) {
+//                    mDelegate.mViewChangeListener.onViewChange(true);
+//                }
                 isWeekView = false;
 
             }

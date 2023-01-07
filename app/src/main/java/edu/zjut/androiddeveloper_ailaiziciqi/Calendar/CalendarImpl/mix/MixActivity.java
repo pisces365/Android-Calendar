@@ -8,6 +8,7 @@ import static edu.zjut.androiddeveloper_ailaiziciqi.Calendar.DB.PreferencesHelpe
 import static edu.zjut.androiddeveloper_ailaiziciqi.Calendar.Event.ScheduleUtils.*;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.content.IntentFilter;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -373,7 +375,7 @@ public class MixActivity extends BaseActivity implements
         //fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MixActivity.this);
         //getLocation();
         authorizeWeatherAccount();
-        getWeather(MixActivity.this);
+//        getWeather(MixActivity.this);
 
         Log.i("Shared Preferences", "onCreate操作");
         Log.i("Shared Preferences", "=========================================================================");
@@ -391,6 +393,8 @@ public class MixActivity extends BaseActivity implements
         preferencesHelper.safePutString("old_man_name", "DEFAULT");
         // 语音播报
         preferencesHelper.safePutString("voice_over", OPTION_DEACTIVATED);
+        // 隐私政策
+        preferencesHelper.safePutString("privacy", OPTION_DEACTIVATED);
         Log.i("Shared Preferences", "=========================================================================");
 
         // 判断并开启老年模式
@@ -401,6 +405,43 @@ public class MixActivity extends BaseActivity implements
             finish();
             Log.i("Shared Preferences", "开启老年模式");
             Log.i("Shared Preferences", "=========================================================================");
+        }
+
+        String privacy = preferencesHelper.getString("privacy");
+        if (privacy.equals(OPTION_DEACTIVATED)) {
+            TextView tv = new TextView(this);
+            tv.setText(R.string.privacy_content);
+            tv.setMovementMethod(LinkMovementMethod.getInstance());
+            AlertDialog alertDialog2 = new AlertDialog.Builder(this)
+                    .setTitle("爱瓷日历隐私政策")
+                    .setView(tv)
+                    
+//                .setIcon(R.mipmap.ic_launcher)
+                    .setPositiveButton("同意", new DialogInterface.OnClickListener() {//添加"Yes"按钮
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+//                        Toast.makeText(MixActivity.this, "这是确定按钮", Toast.LENGTH_SHORT).show();
+                            preferencesHelper.putString("privacy", OPTION_ACTIVATED);
+                        }
+                    })
+
+                    .setNegativeButton("拒绝", new DialogInterface.OnClickListener() {//添加取消
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+//                        Toast.makeText(MixActivity.this, "这是取消按钮", Toast.LENGTH_SHORT).show();
+//                            System.exit(0);
+                            finish();
+                        }
+                    })
+//                .setNeutralButton("普通按钮", new DialogInterface.OnClickListener() {//添加普通按钮
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        Toast.makeText(MixActivity.this, "这是普通按钮按钮", Toast.LENGTH_SHORT).show();
+//                    }
+//                })
+                    .create();
+            alertDialog2.setCancelable(false);
+            alertDialog2.show();
         }
     }
 

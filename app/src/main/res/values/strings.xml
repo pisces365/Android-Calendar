@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aici Calendar</string>
+    <string name="app_name">爱瓷日历</string>
 
     <string-array name="english_week_string_array">
         <item>Sun</item>
@@ -115,5 +115,5 @@
     <string name="app_widget_description">Add a Daily Schedule List</string>
     <string name="title_activity_settings" translatable="false">SettingsActivity</string>
 
-
+    <string name="privacy_content">请您务必仔细阅读“<a href="https://pisces365.github.io">隐私政策</a>”各条款，详细了解。本应用将收集Android ID、MAC信息，用于根据用户设备信息存储您的日程信息；本应用使用第三方SDK（com.qweather.sdk）获取MAC、Android ID。如同意请点击“同意”并接受条款，开始使用本应用。</string>
 </resources>

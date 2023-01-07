@@ -316,8 +316,8 @@ public class SearchActivity extends AppCompatActivity {
                 list.add(new ScheduleWithCheck(schedule));
             }
         } else {
-            Schedule default_schedule = new Schedule(LocalDate.of(1999,1,1), LocalTime.now(), LocalTime.now(), "", "", "没有符合的日程");
-            list.add(new ScheduleWithCheck(default_schedule));
+//            Schedule default_schedule = new Schedule(LocalDate.of(1999,1,1), LocalTime.now(), LocalTime.now(), "", "", "没有符合的日程");
+//            list.add(new ScheduleWithCheck(default_schedule));
         }
 
         searchListAdapter = new SearchListAdapter(list, SearchActivity.this);

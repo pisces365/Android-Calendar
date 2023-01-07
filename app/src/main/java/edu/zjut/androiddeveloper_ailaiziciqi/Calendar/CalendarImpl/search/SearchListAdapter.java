@@ -261,7 +261,7 @@ public class SearchListAdapter extends BaseAdapter {
             mCardWithEvent = view.findViewById(R.id.select_card_with_event);
             mCardWithNoEvent = view.findViewById(R.id.select_card_with_no_event);
             mNoEventHint = view.findViewById(R.id.no_event_info);
-            mNoEventHint.setText("没有符合条件的日程");
+//            mNoEventHint.setText("没有符合条件的日程");
             checkBox.setVisibility(View.INVISIBLE);
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override

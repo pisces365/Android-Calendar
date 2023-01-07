@@ -9,10 +9,10 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSONArray;
 import com.google.gson.Gson;
 import com.nlf.calendar.Lunar;
-import com.qweather.sdk.bean.base.Code;
-import com.qweather.sdk.bean.weather.WeatherDailyBean;
-import com.qweather.sdk.view.HeConfig;
-import com.qweather.sdk.view.QWeather;
+//import com.qweather.sdk.bean.base.Code;
+//import com.qweather.sdk.bean.weather.WeatherDailyBean;
+//import com.qweather.sdk.view.HeConfig;
+//import com.qweather.sdk.view.QWeather;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -237,8 +237,8 @@ public final class ScheduleUtils {
      */
     public static void authorizeWeatherAccount() {
         if (!WEATHER_ACCOUNT_AUTHORIZED) {
-            HeConfig.init("HE2205232030041442", "0057210cb33c4e3aadd2fac6d804126f");
-            HeConfig.switchToDevService();
+//            HeConfig.init("HE2205232030041442", "0057210cb33c4e3aadd2fac6d804126f");
+//            HeConfig.switchToDevService();
             Log.i("Random Debug", "天气API授权完成");
             WEATHER_ACCOUNT_AUTHORIZED = true;
         }
@@ -249,63 +249,63 @@ public final class ScheduleUtils {
      *
      * @param context 当前上下文
      */
-    public static void getWeather(final Context context) {
-        /**
-         * 3天预报数据
-         * @param location 所查询的地区，可通过该地区ID、经纬度进行查询经纬度格式：经度,纬度
-         *                 （英文,分隔，十进制格式，北纬东经为正，南纬西经为负)
-         * @param lang     (选填)多语言，可以不使用该参数，默认为简体中文
-         * @param unit     (选填)单位选择，公制（m）或英制（i），默认为公制单位
-         * @param listener 网络访问结果回调
-         */
-        QWeather.getWeather3D(context, CITY_LOCATION, new QWeather.OnResultWeatherDailyListener() {
-            @Override
-            public void onError(Throwable e) {
-                Log.i("Random Debug", "getWeather onError: " + e);
-            }
-
-            @Override
-            public void onSuccess(WeatherDailyBean weatherDailyBean) {
-                Log.i("Random Debug", "getWeather onSuccess: " + new Gson().toJson(weatherDailyBean));
-
-                //先判断返回的status是否正确，当status正确时获取数据，若status不正确，可查看status对应的Code值找到原因
-                if (Code.OK == weatherDailyBean.getCode()) {
-                    if (WEATHER_REPORTS == null) {
-                        WEATHER_REPORTS = new ArrayList<>();
-                    } else if (!WEATHER_REPORTS.isEmpty()) {
-                        WEATHER_REPORTS.clear();
-                    }
-                    // 获取3天天气
-                    List<WeatherDailyBean.DailyBean> dailyBeanList = weatherDailyBean.getDaily();
-                    Log.i("Random Debug", "获得的天气数量: " + dailyBeanList.size());
-                    for (int i = 0; i < dailyBeanList.size(); ++i) {
-                        // 获取数据
-                        String date = dailyBeanList.get(i).getFxDate();
-                        String weather = dailyBeanList.get(i).getTextDay();
-                        String tempMin = dailyBeanList.get(i).getTempMin();
-                        String tempMax = dailyBeanList.get(i).getTempMax();
-                        String moonPhase = dailyBeanList.get(i).getMoonPhase();
-                        String wind = dailyBeanList.get(i).getWindDirDay();
-                        String windScale = dailyBeanList.get(i).getWindScaleDay();
-                        String rainMeters = dailyBeanList.get(i).getPrecip();
-                        // 形成数据
-                        LocalDate curDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                        String curWeatherLine1 = weather + "   " + tempMin + " 到 " + tempMax + " 摄氏度";
-                        String curWeatherLine2 = wind + windScale + "级   " + moonPhase + "   风力" + rainMeters + "级";
-                        // 保存数据
-                        WeatherOfDate weatherOfDate = new WeatherOfDate(curDate, curWeatherLine1, curWeatherLine2);
-                        WEATHER_REPORTS.add(weatherOfDate);
-                    }
-                    IS_WEATHER_DATA_RECEIVED = true;
-                    Log.i("Random Debug", "天气加载完毕:" + WEATHER_REPORTS.size());
-                } else {
-                    //在此查看返回数据失败的原因
-                    Code code = weatherDailyBean.getCode();
-                    Log.i("Random Debug", "failed code: " + code);
-                }
-            }
-        });
-    }
+//    public static void getWeather(final Context context) {
+//        /**
+//         * 3天预报数据
+//         * @param location 所查询的地区，可通过该地区ID、经纬度进行查询经纬度格式：经度,纬度
+//         *                 （英文,分隔，十进制格式，北纬东经为正，南纬西经为负)
+//         * @param lang     (选填)多语言，可以不使用该参数，默认为简体中文
+//         * @param unit     (选填)单位选择，公制（m）或英制（i），默认为公制单位
+//         * @param listener 网络访问结果回调
+//         */
+//        QWeather.getWeather3D(context, CITY_LOCATION, new QWeather.OnResultWeatherDailyListener() {
+//            @Override
+//            public void onError(Throwable e) {
+//                Log.i("Random Debug", "getWeather onError: " + e);
+//            }
+//
+//            @Override
+//            public void onSuccess(WeatherDailyBean weatherDailyBean) {
+//                Log.i("Random Debug", "getWeather onSuccess: " + new Gson().toJson(weatherDailyBean));
+//
+//                //先判断返回的status是否正确，当status正确时获取数据，若status不正确，可查看status对应的Code值找到原因
+//                if (Code.OK == weatherDailyBean.getCode()) {
+//                    if (WEATHER_REPORTS == null) {
+//                        WEATHER_REPORTS = new ArrayList<>();
+//                    } else if (!WEATHER_REPORTS.isEmpty()) {
+//                        WEATHER_REPORTS.clear();
+//                    }
+//                    // 获取3天天气
+//                    List<WeatherDailyBean.DailyBean> dailyBeanList = weatherDailyBean.getDaily();
+//                    Log.i("Random Debug", "获得的天气数量: " + dailyBeanList.size());
+//                    for (int i = 0; i < dailyBeanList.size(); ++i) {
+//                        // 获取数据
+//                        String date = dailyBeanList.get(i).getFxDate();
+//                        String weather = dailyBeanList.get(i).getTextDay();
+//                        String tempMin = dailyBeanList.get(i).getTempMin();
+//                        String tempMax = dailyBeanList.get(i).getTempMax();
+//                        String moonPhase = dailyBeanList.get(i).getMoonPhase();
+//                        String wind = dailyBeanList.get(i).getWindDirDay();
+//                        String windScale = dailyBeanList.get(i).getWindScaleDay();
+//                        String rainMeters = dailyBeanList.get(i).getPrecip();
+//                        // 形成数据
+//                        LocalDate curDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//                        String curWeatherLine1 = weather + "   " + tempMin + " 到 " + tempMax + " 摄氏度";
+//                        String curWeatherLine2 = wind + windScale + "级   " + moonPhase + "   风力" + rainMeters + "级";
+//                        // 保存数据
+//                        WeatherOfDate weatherOfDate = new WeatherOfDate(curDate, curWeatherLine1, curWeatherLine2);
+//                        WEATHER_REPORTS.add(weatherOfDate);
+//                    }
+//                    IS_WEATHER_DATA_RECEIVED = true;
+//                    Log.i("Random Debug", "天气加载完毕:" + WEATHER_REPORTS.size());
+//                } else {
+//                    //在此查看返回数据失败的原因
+//                    Code code = weatherDailyBean.getCode();
+//                    Log.i("Random Debug", "failed code: " + code);
+//                }
+//            }
+//        });
+//    }
 
     /**
      * 给出日期获取当天天气数据

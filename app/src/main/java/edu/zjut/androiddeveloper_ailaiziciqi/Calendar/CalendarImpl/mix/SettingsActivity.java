@@ -83,10 +83,10 @@ public class SettingsActivity extends AppCompatActivity {
             SwitchPreference onlyWeekView = findPreference("only_week_view_mode");  // 仅周视图
             ListPreference weekBegin = findPreference("week_begin");    // 一周的开始
             SwitchPreference oldManMode = findPreference("old_man_mode");  // 老年模式
-            EditTextPreference oldManName = findPreference("old_man_name"); // 老人的姓名
+//            EditTextPreference oldManName = findPreference("old_man_name"); // 老人的姓名
 //            SwitchPreference voiceOver = findPreference("voice_over");  // 语音播报
             Preference aboutUs = findPreference("about_us");    // 关于我们
-            Preference contactUs = findPreference("contact_us");    // 联系我们
+//            Preference contactUs = findPreference("contact_us");    // 联系我们
             Preference appVersion = findPreference("app_version");    // 软件版本
 
             // 启动样式
@@ -183,49 +183,49 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
             // 老人姓名
-            if (oldManName != null) {
-
-                // 设置标题名称
-                PreferencesHelper helper = new PreferencesHelper(requireContext(), SHARED_PREFERENCE_NAME);
-                String before = helper.getString("old_man_name");
-                // 之前没有输入名字的记录,那么就需要对title和summary也进行更改
-                if (!before.equals("DEFAULT") && !before.isEmpty()) {
-                    oldManName.setDialogTitle("重设您的姓名");
-                    oldManName.setSummary(before);
-                    oldManName.setDefaultValue(before);
-                    oldManName.setText(before);
-                } else {
-                    oldManName.setDialogTitle("输入您的姓名");
-                    oldManName.setSummary("若输入名字,语音播报时您的名字也会被读出");
-                    oldManName.setDefaultValue("");
-                }
-
-                // 设置监听器
-                oldManName.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    @Override
-                    public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        PreferencesHelper helper = new PreferencesHelper(requireContext(), SHARED_PREFERENCE_NAME);
-                        String before = helper.getString("old_man_name");
-                        String now = newValue.toString();
-                        Log.i("Shared Preferences", "修改了老人名字,准备修改成为" + now);
-                        Log.i("Shared Preferences", "修改了老人名字,更改前的值为" + before);
-                        if (before.equals("DEFAULT") || !before.isEmpty()) {
-                            oldManName.setDialogTitle("重设您的姓名");
-                            oldManName.setSummary(now);
-                            oldManName.setDefaultValue(now);
-                            oldManName.setText(now);
-                            helper.putString("old_man_name", now);
-                            Toast.makeText(requireContext(), "设置姓名成功", Toast.LENGTH_SHORT).show();
-                        } else {
-                            oldManName.setDialogTitle("输入您的姓名");
-                            oldManName.setSummary("若输入名字,语音播报时您的名字也会被读出");
-                            oldManName.setDefaultValue("");
-                        }
-                        Log.i("Shared Preferences", "修改了老人名字,更改后的值为" + helper.getString("old_man_name"));
-                        return false;
-                    }
-                });
-            }
+//            if (oldManName != null) {
+//
+//                // 设置标题名称
+//                PreferencesHelper helper = new PreferencesHelper(requireContext(), SHARED_PREFERENCE_NAME);
+//                String before = helper.getString("old_man_name");
+//                // 之前没有输入名字的记录,那么就需要对title和summary也进行更改
+//                if (!before.equals("DEFAULT") && !before.isEmpty()) {
+//                    oldManName.setDialogTitle("重设您的姓名");
+//                    oldManName.setSummary(before);
+//                    oldManName.setDefaultValue(before);
+//                    oldManName.setText(before);
+//                } else {
+//                    oldManName.setDialogTitle("输入您的姓名");
+//                    oldManName.setSummary("若输入名字,语音播报时您的名字也会被读出");
+//                    oldManName.setDefaultValue("");
+//                }
+//
+//                // 设置监听器
+//                oldManName.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//                    @Override
+//                    public boolean onPreferenceChange(Preference preference, Object newValue) {
+//                        PreferencesHelper helper = new PreferencesHelper(requireContext(), SHARED_PREFERENCE_NAME);
+//                        String before = helper.getString("old_man_name");
+//                        String now = newValue.toString();
+//                        Log.i("Shared Preferences", "修改了老人名字,准备修改成为" + now);
+//                        Log.i("Shared Preferences", "修改了老人名字,更改前的值为" + before);
+//                        if (before.equals("DEFAULT") || !before.isEmpty()) {
+//                            oldManName.setDialogTitle("重设您的姓名");
+//                            oldManName.setSummary(now);
+//                            oldManName.setDefaultValue(now);
+//                            oldManName.setText(now);
+//                            helper.putString("old_man_name", now);
+//                            Toast.makeText(requireContext(), "设置姓名成功", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            oldManName.setDialogTitle("输入您的姓名");
+//                            oldManName.setSummary("若输入名字,语音播报时您的名字也会被读出");
+//                            oldManName.setDefaultValue("");
+//                        }
+//                        Log.i("Shared Preferences", "修改了老人名字,更改后的值为" + helper.getString("old_man_name"));
+//                        return false;
+//                    }
+//                });
+//            }
 
             // 语音播报
 //            if (voiceOver != null) {
@@ -249,25 +249,25 @@ public class SettingsActivity extends AppCompatActivity {
 //            }
 
             // 软件版本
-            if (appVersion != null) {
-                appVersion.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("https://github.com/Archett0/Android-Calendar"));
-                        startActivity(intent);
-                        return true;
-                    }
-                });
-            }
+//            if (appVersion != null) {
+//                appVersion.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//                    @Override
+//                    public boolean onPreferenceClick(Preference preference) {
+//                        Intent intent = new Intent(Intent.ACTION_VIEW);
+//                        intent.setData(Uri.parse("https://github.com/Archett0/Android-Calendar"));
+//                        startActivity(intent);
+//                        return true;
+//                    }
+//                });
+//            }
 
-            // 关于我们
+             //关于我们
             if (aboutUs != null) {
                 aboutUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                     @Override
                     public boolean onPreferenceClick(Preference preference) {
                         Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("http://www.zjsfgkw.cn/"));
+                        intent.setData(Uri.parse("https://pisces365.github.io/"));
                         startActivity(intent);
                         return true;
                     }
@@ -275,17 +275,17 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
             // 联系我们
-            if (contactUs != null) {
-                contactUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                    @Override
-                    public boolean onPreferenceClick(Preference preference) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("http://police.hangzhou.gov.cn/"));
-                        startActivity(intent);
-                        return true;
-                    }
-                });
-            }
+//            if (contactUs != null) {
+//                contactUs.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//                    @Override
+//                    public boolean onPreferenceClick(Preference preference) {
+//                        Intent intent = new Intent(Intent.ACTION_VIEW);
+//                        intent.setData(Uri.parse("http://police.hangzhou.gov.cn/"));
+//                        startActivity(intent);
+//                        return true;
+//                    }
+//                });
+//            }
         }
     }
 }

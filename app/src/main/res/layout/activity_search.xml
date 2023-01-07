@@ -46,7 +46,7 @@
 
             <ImageView
                 android:id="@+id/sms_search"
-                android:layout_width="60dp"
+                android:layout_width="0dp"
                 android:layout_height="32dp"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"

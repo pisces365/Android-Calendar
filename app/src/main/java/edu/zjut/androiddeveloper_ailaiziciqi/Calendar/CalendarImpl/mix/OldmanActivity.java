@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -27,7 +26,6 @@ import java.util.List;
 import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.CalendarImpl.search.SearchActivity;
 import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.CalendarImpl.add.OldmanAddActivity;
 import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.R;
-import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.Voice.VoiceAssistant;
 import edu.zjut.androiddeveloper_ailaiziciqi.LayoutTools.FriendlyScrollView;
 
 public class OldmanActivity extends AppCompatActivity {
@@ -59,13 +57,13 @@ public class OldmanActivity extends AppCompatActivity {
     //    private View flipperView;
     protected Handler mainHandler;
 
-    private VoiceAssistant voiceAssistant;
+//    private VoiceAssistant voiceAssistant;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        voiceAssistant = new VoiceAssistant(this, mainHandler);
+//        voiceAssistant = new VoiceAssistant(this, mainHandler);
     }
 
     @Override
@@ -80,7 +78,7 @@ public class OldmanActivity extends AppCompatActivity {
         iv_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voiceAssistant.release();
+//                voiceAssistant.release();
                 Intent intent = new Intent(OldmanActivity.this, OldmanAddActivity.class);
                 startActivityForResult(intent, 1);
             }
@@ -98,20 +96,20 @@ public class OldmanActivity extends AppCompatActivity {
 
 
         // 百度语音
-        mainHandler = new Handler() {
-            /*
-             * @param msg
-             */
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-            }
-
-        };
-        voiceAssistant = new VoiceAssistant(this, mainHandler);
-
-        voice_all_details = findViewById(R.id.voice_all_details);
-        voice_all_details.setOnClickListener(new OnClickEventAll());
+//        mainHandler = new Handler() {
+//            /*
+//             * @param msg
+//             */
+//            @Override
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//            }
+//
+//        };
+//        voiceAssistant = new VoiceAssistant(this, mainHandler);
+//
+//        voice_all_details = findViewById(R.id.voice_all_details);
+//        voice_all_details.setOnClickListener(new OnClickEventAll());
 
         mgListener = new MyGestureListener();
         mDetector = new GestureDetector(this, mgListener);
@@ -185,17 +183,17 @@ public class OldmanActivity extends AppCompatActivity {
         poem_left = flipperView.findViewById(R.id.poem_left);
         poem_right = flipperView.findViewById(R.id.poem_right);
 
-        OnClickEvent onClickEvent = new OnClickEvent();
-
-        mYear.setOnClickListener(onClickEvent);
-        mMonth.setOnClickListener(onClickEvent);
-        mDate.setOnClickListener(onClickEvent);
-        mLunarDate.setOnClickListener(onClickEvent);
-        mDayOfWeek.setOnClickListener(onClickEvent);
-        mTodayGood.setOnClickListener(onClickEvent);
-        mTodayBad.setOnClickListener(onClickEvent);
-        poem_left.setOnClickListener(onClickEvent);
-        poem_right.setOnClickListener(onClickEvent);
+//        OnClickEvent onClickEvent = new OnClickEvent();
+//
+//        mYear.setOnClickListener(onClickEvent);
+//        mMonth.setOnClickListener(onClickEvent);
+//        mDate.setOnClickListener(onClickEvent);
+//        mLunarDate.setOnClickListener(onClickEvent);
+//        mDayOfWeek.setOnClickListener(onClickEvent);
+//        mTodayGood.setOnClickListener(onClickEvent);
+//        mTodayBad.setOnClickListener(onClickEvent);
+//        poem_left.setOnClickListener(onClickEvent);
+//        poem_right.setOnClickListener(onClickEvent);
 
         makeLunar(date);
 
@@ -256,69 +254,69 @@ public class OldmanActivity extends AppCompatActivity {
     }
 
 
-    private class OnClickEvent implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.old_man_year:
-                    voiceAssistant.speak(mYear.getText().toString());
-                    break;
-                case R.id.old_man_month:
-                    voiceAssistant.speak(mMonth.getText().toString());
-                    break;
-                case R.id.old_man_date:
-                    voiceAssistant.speak(mDate.getText().toString() + "日");
-                    break;
-                case R.id.old_man_lunar_date:
-                    voiceAssistant.speak("农历" + mLunarDate.getText().toString());
-                    break;
-                case R.id.old_man_day_of_week:
-                    voiceAssistant.speak(mDayOfWeek.getText().toString());
-                    break;
-                case R.id.old_man_good:
-                    voiceAssistant.speak("宜" + mTodayGood.getText().toString());
-                    break;
-                case R.id.old_man_bad:
-                    voiceAssistant.speak("忌" + mTodayBad.getText().toString());
-                    break;
-                case R.id.poem_left:
-                    voiceAssistant.speak(poem_left.getText().toString());
-                    break;
-                case R.id.poem_right:
-                    voiceAssistant.speak(poem_right.getText().toString());
-                    break;
-            }
-        }
-    }
+//    private class OnClickEvent implements View.OnClickListener {
+//        @Override
+//        public void onClick(View view) {
+//            switch (view.getId()) {
+//                case R.id.old_man_year:
+//                    voiceAssistant.speak(mYear.getText().toString());
+//                    break;
+//                case R.id.old_man_month:
+//                    voiceAssistant.speak(mMonth.getText().toString());
+//                    break;
+//                case R.id.old_man_date:
+//                    voiceAssistant.speak(mDate.getText().toString() + "日");
+//                    break;
+//                case R.id.old_man_lunar_date:
+//                    voiceAssistant.speak("农历" + mLunarDate.getText().toString());
+//                    break;
+//                case R.id.old_man_day_of_week:
+//                    voiceAssistant.speak(mDayOfWeek.getText().toString());
+//                    break;
+//                case R.id.old_man_good:
+//                    voiceAssistant.speak("宜" + mTodayGood.getText().toString());
+//                    break;
+//                case R.id.old_man_bad:
+//                    voiceAssistant.speak("忌" + mTodayBad.getText().toString());
+//                    break;
+//                case R.id.poem_left:
+//                    voiceAssistant.speak(poem_left.getText().toString());
+//                    break;
+//                case R.id.poem_right:
+//                    voiceAssistant.speak(poem_right.getText().toString());
+//                    break;
+//            }
+//        }
+//    }
 
-    private class OnClickEventAll implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
+//    private class OnClickEventAll implements View.OnClickListener {
+//        @Override
+//        public void onClick(View view) {
+//
+//            voiceAssistant.speak("今天是" + mYear.getText().toString());
+//
+//            voiceAssistant.speak(mMonth.getText().toString());
+//
+//            voiceAssistant.speak(mDate.getText().toString() + "日");
+//
+//            voiceAssistant.speak("农历" + mLunarDate.getText().toString());
+//
+//            voiceAssistant.speak(mDayOfWeek.getText().toString());
+//
+//            voiceAssistant.speak("宜" + mTodayGood.getText().toString());
+//
+//            voiceAssistant.speak("忌" + mTodayBad.getText().toString());
+//
+//            voiceAssistant.speak("今日诗句："+poem_left.getText().toString());
+//            voiceAssistant.speak(poem_right.getText().toString());
 
-            voiceAssistant.speak("今天是" + mYear.getText().toString());
-
-            voiceAssistant.speak(mMonth.getText().toString());
-
-            voiceAssistant.speak(mDate.getText().toString() + "日");
-
-            voiceAssistant.speak("农历" + mLunarDate.getText().toString());
-
-            voiceAssistant.speak(mDayOfWeek.getText().toString());
-
-            voiceAssistant.speak("宜" + mTodayGood.getText().toString());
-
-            voiceAssistant.speak("忌" + mTodayBad.getText().toString());
-
-            voiceAssistant.speak("今日诗句："+poem_left.getText().toString());
-            voiceAssistant.speak(poem_right.getText().toString());
-
-        }
-    }
+//        }
+//    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         // 解除绑定
-        voiceAssistant.release();
+//        voiceAssistant.release();
     }
 }

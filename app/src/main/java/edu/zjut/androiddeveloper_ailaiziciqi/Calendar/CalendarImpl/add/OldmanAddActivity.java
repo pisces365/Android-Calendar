@@ -14,7 +14,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -38,7 +37,6 @@ import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.DB.DbContact;
 import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.DesktopWidget.DayCalenderWidget;
 import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.Model.Schedule;
 import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.R;
-import edu.zjut.androiddeveloper_ailaiziciqi.Calendar.Voice.VoiceAssistant;
 
 public class OldmanAddActivity extends AppCompatActivity {
     private TextView timestart, timeend;
@@ -64,7 +62,7 @@ public class OldmanAddActivity extends AppCompatActivity {
 
     private TextView title;
     protected Handler mainHandler;
-    private VoiceAssistant voiceAssistant;
+//    private VoiceAssistant voiceAssistant;
 
     private TextView timetitle;
     private TextView starttitle;
@@ -115,7 +113,7 @@ public class OldmanAddActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                voiceAssistant.release();
+//                voiceAssistant.release();
                 finish();
             }
         });
@@ -138,7 +136,7 @@ public class OldmanAddActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         Log.w("ListRemoteViewsFactory refresh exceprion", e.getMessage());
                     }
-                    voiceAssistant.release();
+//                    voiceAssistant.release();
                     finish();
                 }
             }
@@ -149,17 +147,17 @@ public class OldmanAddActivity extends AppCompatActivity {
         OnClickEvent onClickEvent = new OnClickEvent();
 
         //        百度语音
-        mainHandler = new Handler() {
-            /*
-             * @param msg
-             */
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-            }
-
-        };
-        voiceAssistant = new VoiceAssistant(this, mainHandler);
+//        mainHandler = new Handler() {
+//            /*
+//             * @param msg
+//             */
+//            @Override
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//            }
+//
+//        };
+//        voiceAssistant = new VoiceAssistant(this, mainHandler);
 
         title.setOnClickListener(onClickEvent);
         timetitle.setOnClickListener(onClickEvent);
@@ -173,7 +171,7 @@ public class OldmanAddActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) { //按下的如果是BACK，同时没有重复
-            voiceAssistant.release();
+//            voiceAssistant.release();
             finish();
             return true;
         }
@@ -430,24 +428,24 @@ public class OldmanAddActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.timestart:
-                    voiceAssistant.speak(timestart.getText().toString());
-                    break;
-                case R.id.timeend:
-                    voiceAssistant.speak(timeend.getText().toString());
-                    break;
-                case R.id.timetitle:
-                    voiceAssistant.speak(timetitle.getText().toString());
-                    break;
-                case R.id.starttitle:
-                    voiceAssistant.speak(starttitle.getText().toString());
-                    break;
-                case R.id.endtitle:
-                    voiceAssistant.speak(endtitle.getText().toString());
-                    break;
-                case R.id.title:
-                    voiceAssistant.speak(title.getText().toString());
-                    break;
+//                case R.id.timestart:
+//                    voiceAssistant.speak(timestart.getText().toString());
+//                    break;
+//                case R.id.timeend:
+//                    voiceAssistant.speak(timeend.getText().toString());
+//                    break;
+//                case R.id.timetitle:
+//                    voiceAssistant.speak(timetitle.getText().toString());
+//                    break;
+//                case R.id.starttitle:
+//                    voiceAssistant.speak(starttitle.getText().toString());
+//                    break;
+//                case R.id.endtitle:
+//                    voiceAssistant.speak(endtitle.getText().toString());
+//                    break;
+//                case R.id.title:
+//                    voiceAssistant.speak(title.getText().toString());
+//                    break;
             }
         }
 

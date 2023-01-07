@@ -34,13 +34,13 @@
             app:summaryOff="老年模式已禁用"
             app:summaryOn="老年模式已启用" />
 
-        <EditTextPreference
-            app:key="old_man_name"
-            app:dependency="old_man_mode"
-            app:title="您的名字"
-            app:defaultValue=""
-            app:dialogTitle="输入您的姓名"
-            app:summary="若输入名字,语音播报时您的名字也会被读出" />
+<!--        <EditTextPreference-->
+<!--            app:key="old_man_name"-->
+<!--            app:dependency="old_man_mode"-->
+<!--            app:title="您的名字"-->
+<!--            app:defaultValue=""-->
+<!--            app:dialogTitle="输入您的姓名"-->
+<!--            app:summary="若输入名字,语音播报时您的名字也会被读出" />-->
 
 <!--        <SwitchPreference-->
 <!--            app:key="voice_over"-->
@@ -56,11 +56,11 @@
             app:summary="1.0.0"
             app:title="软件版本" />
         <Preference
-            android:title="关于我们"
+            android:title="隐私政策"
             app:key="about_us" />
-        <Preference
-            android:title="联系我们"
-            app:key="contact_us" />
+<!--        <Preference-->
+<!--            android:title="联系我们"-->
+<!--            app:key="contact_us" />-->
     </PreferenceCategory>
 
 </PreferenceScreen>
